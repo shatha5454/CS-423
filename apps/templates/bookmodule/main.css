@@ -1,0 +1,67 @@
+.link1{
+  background-color: green;
+  color: red;
+  display: block;
+  text-align: center;
+  padding: 10px 20px;
+}
+.link2{
+  background-color: grey;
+  color: yellow;
+  display: block;
+  text-align: center;
+  padding: 10px 20px;
+}
+.link3{
+  background-color: black;
+  color: white;
+  display: block;
+  text-align: center;
+  padding: 10px 20px;
+}
+.tags{
+  background-color: burlywood;
+  color: green;
+  display: block;
+  padding: 10px 20px;
+}
+.lists{
+  background-color: darkcyan;
+  color: white;
+  display: block;
+  padding: 10px 20px;
+}
+
+.s{
+  list-style-type: circle;
+}
+
+table{
+    display: block;
+  text-align: center;
+  padding: 10px 600px;
+}
+th,td{
+  border: 1px solid;
+}
+
+img{
+  width: 60px;
+  height: 60px;
+}
+
+
+
+
+.link1:hover {
+  background-color: #5be65b;  
+}
+
+.link2:visited {
+  color: #4c00ff;
+}
+
+.link3:active {
+  background-color: #ff0000; /* Active background color */
+  color: #fff; /* Active text color */
+}
