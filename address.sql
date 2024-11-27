@@ -1,0 +1,10 @@
+insert into bookmodule_address (id, city) values (1, 'Rivertown');
+insert into bookmodule_address (id, city) values (2, 'Willow Creek');
+insert into bookmodule_address (id, city) values (3, 'Meadowbrook');
+insert into bookmodule_address (id, city) values (4, 'Sunset Valley');
+insert into bookmodule_address (id, city) values (5, 'Pinecrest');
+insert into bookmodule_address (id, city) values (6, 'Rivertown');
+insert into bookmodule_address (id, city) values (7, 'Rivertown');
+insert into bookmodule_address (id, city) values (8, 'Meadowbrook');
+insert into bookmodule_address (id, city) values (9, 'Willow Creek');
+insert into bookmodule_address (id, city) values (10, 'Willow Creek');

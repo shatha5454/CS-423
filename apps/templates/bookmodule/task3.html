@@ -1,0 +1,25 @@
+{% extends "bookmodule/layouts/base.html" %}
+
+
+{% load static %}
+
+
+{% block title %} Books with Specific Conditions {% endblock title %}
+
+
+{% block content %}
+
+<h1>Books with Edition Less Than or Equal to 2 and No "qu" in Title or Author</h1>
+    
+    <ul>
+        {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong> by {{ book.author }} (Edition: {{ book.edition }})
+            </li>
+        {% empty %}
+            <li>No books found matching the criteria.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}
+

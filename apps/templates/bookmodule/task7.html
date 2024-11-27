@@ -1,0 +1,32 @@
+{% extends "bookmodule/layouts/base.html" %}
+
+
+{% load static %}
+
+
+{% block title %} Students per City {% endblock title %}
+
+
+{% block content %}
+
+<h1>Number of Students in Each City</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>City</th>
+            <th>Number of Students</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for address in addresses_with_student_count %}
+            <tr>
+                <td>{{ address.city }}</td>
+                <td>{{ address.student_count }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
+

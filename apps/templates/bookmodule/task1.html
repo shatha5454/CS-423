@@ -1,0 +1,25 @@
+{% extends "bookmodule/layouts/base.html" %}
+
+
+{% load static %}
+
+
+{% block title %} Books under 50 {% endblock title %}
+
+
+{% block content %}
+
+<h1>Books with Price Less Than or Equal to 50</h1>
+    
+    <ul>
+        {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong> by {{ book.author }} - ${{ book.price }}
+            </li>
+        {% empty %}
+            <li>No books found under 50.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}
+

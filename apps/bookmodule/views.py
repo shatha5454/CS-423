@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Book
+from django.db.models import Q
+from django.db.models import Count, Sum, Avg, Max, Min
+from .models import Address
+
 
 
 
@@ -89,6 +93,46 @@ def lookup_query(request):
         return render(request, 'bookmodule/bookList.html', {'books' : mybooks})
     else:
         return render(request, 'bookmodule/index.html')
+    
 
+
+
+
+
+def books_under_50(request):
+    books = Book.objects.filter(Q(price__lte=50))
+    return render(request, 'bookmodule/task1.html', {'books': books})
+
+def books_task2(request):
+    edition_condition = Q(edition__gt=2)
+    title_or_author_condition = Q(title__icontains='qu') | Q(author__icontains='qu')
+    books = Book.objects.filter(edition_condition & title_or_author_condition)
+    return render(request, 'bookmodule/task2.html', {'books': books})
+
+def books_task3(request):
+    edition_condition = Q(edition__lte=2)
+    title_condition = ~Q(title__icontains='qu')
+    author_condition = ~Q(author__icontains='qu')
+    books = Book.objects.filter(edition_condition & (title_condition | author_condition))
+    return render(request, 'bookmodule/task3.html', {'books': books})
+
+def books_task4(request):
+    books = Book.objects.all().order_by('title')
+    return render(request, 'bookmodule/task4.html', {'books': books})
+
+def books_task5(request):
+    aggregation = Book.objects.aggregate(
+        total_books=Count('id'),
+        total_price=Sum('price'),
+        average_price=Avg('price'),
+        max_price=Max('price'),
+        min_price=Min('price') 
+    )
+    return render(request, 'bookmodule/task5.html', {'aggregation': aggregation})
+
+def students_per_city(request):
+    addresses_with_student_count = Address.objects.annotate(student_count=Count('students'))
+    return render(request, 'bookmodule/task7.html', {'addresses_with_student_count': addresses_with_student_count
+    })
 
 

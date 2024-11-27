@@ -1,0 +1,21 @@
+{% extends "bookmodule/layouts/base.html" %}
+
+
+{% load static %}
+
+
+{% block title %} Book Aggregation {% endblock title %}
+
+
+{% block content %}
+
+<h1>Book Aggregation Statistics</h1>
+
+    <p><strong>Total Number of Books:</strong> {{ aggregation.total_books }}</p>
+    <p><strong>Total Price of All Books:</strong> ${{ aggregation.total_price }}</p>
+    <p><strong>Average Price:</strong> ${{ aggregation.average_price }}</p>
+    <p><strong>Maximum Price:</strong> ${{ aggregation.max_price }}</p>
+    <p><strong>Minimum Price:</strong> ${{ aggregation.min_price }}</p>
+
+{% endblock content %}
+
