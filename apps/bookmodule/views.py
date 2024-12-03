@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Book
 from django.db.models import Q
@@ -134,5 +134,55 @@ def students_per_city(request):
     addresses_with_student_count = Address.objects.annotate(student_count=Count('students'))
     return render(request, 'bookmodule/task7.html', {'addresses_with_student_count': addresses_with_student_count
     })
+
+
+
+
+def list_books(request):
+    books = Book.objects.all()
+    return render(request, 'bookmodule/listbooks.html', {'books': books})
+
+def add_book(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        price = request.POST.get('price')
+        edition = request.POST.get('edition')
+
+        new_book = Book.objects.create(
+            title=title,
+            author=author,
+            price=price,
+            edition=edition,
+        )
+
+        return redirect('list_books')
+
+    return render(request, 'bookmodule/addbook.html')
+
+def edit_book(request, id):
+    book = Book.objects.get(id=id)
+
+    if request.method == 'POST':
+        book.title = request.POST.get('title')
+        book.author = request.POST.get('author')
+        book.price = request.POST.get('price')
+        book.edition = request.POST.get('edition')
+
+        book.save()
+
+        return redirect('list_books')
+
+    return render(request, 'bookmodule/editbook.html', {'book': book})
+
+def delete_book(request, id):
+    try:
+        book = Book.objects.get(id=id)
+    except Book.DoesNotExist:
+        raise Http404("Book not found")
+
+    book.delete()
+
+    return redirect('list_books')
 
 
